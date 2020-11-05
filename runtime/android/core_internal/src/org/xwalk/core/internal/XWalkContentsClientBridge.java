@@ -68,6 +68,7 @@ class XWalkContentsClientBridge extends XWalkContentsClient {
     private XWalkNotificationService mNotificationService;
     private Handler mUiThreadHandler;
     private XWalkMediaPlayerInternal mXWalkMediaPlayerInternal;
+    private XWalkMediaPlayerBuilderInternal mXWalkMediaPlayerBuilderInternal;
 
     /** State recording variables */
     // For fullscreen state.
@@ -166,7 +167,17 @@ class XWalkContentsClientBridge extends XWalkContentsClient {
         mXWalkMediaPlayerInternal = mediaPlayer;
     }
 
+    public void setXWalkMediaPlayerBuilder(XWalkMediaPlayerBuilderInternal mediaPlayerBuilder){
+        mXWalkMediaPlayerBuilderInternal = mediaPlayerBuilder;
+    }
+
     public XWalkMediaPlayerInternal getExternalMediaPlayer() {
+        if(mXWalkMediaPlayerInternal != null) {
+            return mXWalkMediaPlayerInternal;
+        }
+        if(mXWalkMediaPlayerBuilderInternal != null) {
+            mXWalkMediaPlayerInternal = mXWalkMediaPlayerBuilderInternal.buildMediaPlayer();
+        }
         return mXWalkMediaPlayerInternal;
     }
 

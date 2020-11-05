@@ -1016,6 +1016,13 @@ public class XWalkViewInternal extends android.widget.FrameLayout {
         mContent.setXWalkMediaPlayer(mediaPlayer);
     }
 
+    @XWalkAPI(reservable = true)
+    public void setXWalkMediaPlayerBuilder(XWalkMediaPlayerBuilderInternal mediaPlayerBuilder) {
+        if (mContent == null) return;
+        checkThreadSafety();
+        mContent.setXWalkMediaPlayerBuilder(mediaPlayerBuilder);
+    }
+
     /**
      * Set Background color of the view
      */
