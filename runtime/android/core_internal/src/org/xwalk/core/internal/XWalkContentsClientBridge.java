@@ -176,7 +176,7 @@ class XWalkContentsClientBridge extends XWalkContentsClient {
             return mXWalkMediaPlayerInternal;
         }
         if(mXWalkMediaPlayerBuilderInternal != null) {
-            mXWalkMediaPlayerInternal = mXWalkMediaPlayerBuilderInternal.buildMediaPlayer();
+            return mXWalkMediaPlayerBuilderInternal.buildMediaPlayer();
         }
         return mXWalkMediaPlayerInternal;
     }
